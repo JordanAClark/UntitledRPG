@@ -393,6 +393,7 @@ public class BattlePawn : MonoBehaviour
 
         if (!m_myTurn)
         {
+            r_myTurnMarker.SetActive(false);
             return;
         }
 
@@ -588,7 +589,7 @@ public class BattlePawn : MonoBehaviour
             }
 
 
-
+            
             EndTurn();
         }
     }
