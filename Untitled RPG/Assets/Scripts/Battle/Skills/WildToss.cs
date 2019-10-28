@@ -104,6 +104,8 @@ public class WildToss : Skill
         m_target = user.m_battleSystem.m_battleSpaces[targetX, targetY].m_pawn;
         m_user.m_battleSystem.m_playingSkillAnimation = true;
         m_user.m_playingSkillAnimation = true;
+        m_animationStarted = false;
+        m_attackHasHit = false;
         m_user.m_SP -= m_spCost;
         m_user.m_AP -= m_apCost;
         attackTimer = 1.0f;

@@ -262,7 +262,7 @@ public class BattleSystem : MonoBehaviour
                                 {
                                     space.m_cube.GetComponent<MeshRenderer>().material = m_materialNormal;
                                     space.m_selectable = false;
-                                    
+
                                 }
 
                                 foreach (BattleSpace space in m_battleSpaces)
@@ -270,6 +270,7 @@ public class BattleSystem : MonoBehaviour
                                     if (space.m_occupied)
                                     {
                                         space.m_pawn.r_turnMarker.SetActive(false);
+                                        space.m_pawn.r_myTurnMarker.SetActive(false);
                                     }
                                 }
                                 m_SelectableSpaces.Clear();
@@ -316,6 +317,7 @@ public class BattleSystem : MonoBehaviour
                                     if (space.m_occupied)
                                     {
                                         space.m_pawn.r_turnMarker.SetActive(false);
+                                        space.m_pawn.r_myTurnMarker.SetActive(false);
                                     }
                                 }
                                 m_SelectableSpaces.Clear();
@@ -347,7 +349,14 @@ public class BattleSystem : MonoBehaviour
                                     space.m_selectable = false;
                                 }
                                 m_SelectableSpaces.Clear();
-
+                                foreach (BattleSpace space in m_battleSpaces)
+                                {
+                                    if (space.m_occupied)
+                                    {
+                                        space.m_pawn.r_turnMarker.SetActive(false);
+                                        space.m_pawn.r_myTurnMarker.SetActive(false);
+                                    }
+                                }
                                 r_selectedItem.UseItem(m_currentTurnPawn, m_selectionX, m_selectionY);
 
                             }
@@ -369,7 +378,14 @@ public class BattleSystem : MonoBehaviour
                                     space.m_selectable = false;
                                 }
                                 m_SelectableSpaces.Clear();
-
+                                foreach (BattleSpace space in m_battleSpaces)
+                                {
+                                    if (space.m_occupied)
+                                    {
+                                        space.m_pawn.r_turnMarker.SetActive(false);
+                                        space.m_pawn.r_myTurnMarker.SetActive(false);
+                                    }
+                                }
                                 m_currentTurnPawn.MoveTo(m_selectionX, m_selectionY,
                                     new Vector3(m_battleSpaces[m_selectionX, m_selectionY].m_cube.transform.position.x,
                                     m_currentTurnPawn.transform.position.y,
@@ -436,13 +452,21 @@ public class BattleSystem : MonoBehaviour
                         pawn.r_turnMarker.GetComponentInChildren<Text>().text = (pawn.m_timeUntilTurn).ToString();
 
                         if (pawn.m_timeUntilTurn == 0)
+                        {
                             pawn.r_turnMarker.SetActive(false);
+                            pawn.r_myTurnMarker.SetActive(true);
+                        }
                         else
+                        {
                             pawn.r_turnMarker.SetActive(true);
-
+                            pawn.r_myTurnMarker.SetActive(false);
+                        }
 
                         if (pawn.m_isDead)
+                        {
                             pawn.r_turnMarker.SetActive(false);
+                            pawn.r_myTurnMarker.SetActive(false);
+                        }
                     }
                     m_currentTurnPawn.TakeTurn();
                 }
@@ -647,9 +671,15 @@ public class BattleSystem : MonoBehaviour
             m_charactersInBattle[i].m_timeUntilTurn = i;
             m_charactersInBattle[i].r_turnMarker.GetComponentInChildren<Text>().text = i.ToString();
             if (i == 0)
+            {
                 m_charactersInBattle[i].r_turnMarker.SetActive(false);
+                m_charactersInBattle[i].r_myTurnMarker.SetActive(true);
+            }
             else
+            {
                 m_charactersInBattle[i].r_turnMarker.SetActive(true);
+                m_charactersInBattle[i].r_myTurnMarker.SetActive(false);
+            }
             //count enemies and allies
             if (m_charactersInBattle[i].gameObject.tag == "Player")
             {
@@ -912,6 +942,16 @@ public class BattleSystem : MonoBehaviour
         m_selectedCommand = Command.COMMAND_NONE;
         EventSystem.current.SetSelectedGameObject(null);
         r_attackButton.Select();
+        foreach (BattleSpace space in m_battleSpaces)
+        {
+            if (space.m_occupied)
+            {
+                if (space.m_pawn.m_timeUntilTurn != 0)
+                    space.m_pawn.r_turnMarker.SetActive(true);
+                else
+                    space.m_pawn.r_myTurnMarker.SetActive(true);
+            }
+        }
     }
 
     public void AttackEnd(bool cancel)
@@ -941,6 +981,8 @@ public class BattleSystem : MonoBehaviour
             {
                 if (space.m_pawn.m_timeUntilTurn != 0)
                     space.m_pawn.r_turnMarker.SetActive(true);
+                else
+                    space.m_pawn.r_myTurnMarker.SetActive(true);
             }
         }
     }
@@ -973,6 +1015,8 @@ public class BattleSystem : MonoBehaviour
             {
                 if (space.m_pawn.m_timeUntilTurn != 0)
                     space.m_pawn.r_turnMarker.SetActive(true);
+                else
+                    space.m_pawn.r_myTurnMarker.SetActive(true);
             }
         }
     }
@@ -1002,6 +1046,17 @@ public class BattleSystem : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(null);
         r_attackButton.Select();
+
+        foreach (BattleSpace space in m_battleSpaces)
+        {
+            if (space.m_occupied)
+            {
+                if (space.m_pawn.m_timeUntilTurn != 0)
+                    space.m_pawn.r_turnMarker.SetActive(true);
+                else
+                    space.m_pawn.r_myTurnMarker.SetActive(true);
+            }
+        }
     }
 
     void BattleCursorMovement()

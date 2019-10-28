@@ -53,6 +53,7 @@ public class BattlePawn : MonoBehaviour
     public ParticleSystem r_hitParticle;
     public DamageNumbers r_damageNumbers;
     public GameObject r_turnMarker;
+    public GameObject r_myTurnMarker;
     public LevelUpResult m_levelUpResult;
 
     public CharacterSheet r_characterSheet;
@@ -311,6 +312,7 @@ public class BattlePawn : MonoBehaviour
     public void EndTurn()
     {
         m_myTurn = false;
+        r_myTurnMarker.SetActive(false);
         m_battleSystem.EndTurn();
 
         Debug.Log(gameObject.name + " Ends Turn");
@@ -341,11 +343,13 @@ public class BattlePawn : MonoBehaviour
         //move animation
         if (moveTimer > 0)
         {
+            r_myTurnMarker.SetActive(false);
             moveTimer -= Time.deltaTime * 2;
             gameObject.transform.SetPositionAndRotation(Vector3.Lerp(newPos, oldPos, moveTimer), gameObject.transform.rotation);
         }
         else if (moveTimer < 0)
         {
+            r_myTurnMarker.SetActive(true);
             moveTimer = 0;
             gameObject.transform.SetPositionAndRotation(Vector3.Lerp(newPos, oldPos, moveTimer), gameObject.transform.rotation);
         }
@@ -353,11 +357,13 @@ public class BattlePawn : MonoBehaviour
         //attackAnimation
         if (attackTimer > 0 && m_attackHasHit == false)
         {
+            r_myTurnMarker.SetActive(false);
             attackTimer -= Time.deltaTime * 4;
             gameObject.transform.SetPositionAndRotation(Vector3.Lerp(attackPos, oldPos, attackTimer), gameObject.transform.rotation);
         }
         else if (attackTimer < 0 && m_attackHasHit == false)
         {
+            r_myTurnMarker.SetActive(false);
             m_attackHasHit = true;
             //deal Damage
             m_battleSystem.m_battleSpaces[m_targetX, m_targetY].m_pawn.TakeDamage(this, DamageType.DAMAGETYPE_PHYSICAL, 1.0f);
@@ -366,11 +372,13 @@ public class BattlePawn : MonoBehaviour
         }
         else if (attackTimer > 1 && m_attackHasHit == true)
         {
+            r_myTurnMarker.SetActive(true);
             attackTimer = 1;
             gameObject.transform.SetPositionAndRotation(Vector3.Lerp(attackPos, oldPos, attackTimer), gameObject.transform.rotation);
         }
         else if (attackTimer < 1 && m_attackHasHit == true)
         {
+            r_myTurnMarker.SetActive(false);
             attackTimer += Time.deltaTime * 3;
             gameObject.transform.SetPositionAndRotation(Vector3.Lerp(attackPos, oldPos, attackTimer), gameObject.transform.rotation);
         }
