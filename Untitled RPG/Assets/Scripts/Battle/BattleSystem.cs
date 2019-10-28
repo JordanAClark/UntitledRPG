@@ -262,6 +262,15 @@ public class BattleSystem : MonoBehaviour
                                 {
                                     space.m_cube.GetComponent<MeshRenderer>().material = m_materialNormal;
                                     space.m_selectable = false;
+                                    
+                                }
+
+                                foreach (BattleSpace space in m_battleSpaces)
+                                {
+                                    if (space.m_occupied)
+                                    {
+                                        space.m_pawn.r_turnMarker.SetActive(false);
+                                    }
                                 }
                                 m_SelectableSpaces.Clear();
 
@@ -300,6 +309,14 @@ public class BattleSystem : MonoBehaviour
                                 {
                                     space.m_cube.GetComponent<MeshRenderer>().material = m_materialNormal;
                                     space.m_selectable = false;
+                                }
+
+                                foreach (BattleSpace space in m_battleSpaces)
+                                {
+                                    if (space.m_occupied)
+                                    {
+                                        space.m_pawn.r_turnMarker.SetActive(false);
+                                    }
                                 }
                                 m_SelectableSpaces.Clear();
                                 r_selectedSkill.UseSkill(m_currentTurnPawn, m_selectionX, m_selectionY);
@@ -918,6 +935,14 @@ public class BattleSystem : MonoBehaviour
         m_selectedCommand = Command.COMMAND_NONE;
         EventSystem.current.SetSelectedGameObject(null);
         r_attackButton.Select();
+        foreach (BattleSpace space in m_battleSpaces)
+        {
+            if (space.m_occupied)
+            {
+                if (space.m_pawn.m_timeUntilTurn != 0)
+                    space.m_pawn.r_turnMarker.SetActive(true);
+            }
+        }
     }
 
     public void SkillEnd(bool cancel)
@@ -942,6 +967,14 @@ public class BattleSystem : MonoBehaviour
         r_selectedSkill = null;
         EventSystem.current.SetSelectedGameObject(null);
         r_attackButton.Select();
+        foreach (BattleSpace space in m_battleSpaces)
+        {
+            if (space.m_occupied)
+            {
+                if (space.m_pawn.m_timeUntilTurn != 0)
+                    space.m_pawn.r_turnMarker.SetActive(true);
+            }
+        }
     }
 
     public void ItemEnd(bool cancel)
