@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5220028704730105186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5220028704730105187}
+  - component: {fileID: 5220028704730105185}
+  m_Layer: 0
+  m_Name: Kai
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5220028704730105187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220028704730105186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8, y: 0, z: 0.5}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5220028704730105185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220028704730105186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0ca5afd8eb56e448d2bbc305bd7dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_name: Kai
+  m_title: Apprentice Martial Artist
+  m_spriteR: {fileID: 21300000, guid: d22c85fb88e0871429e48c0e96f14d43, type: 3}
+  m_spriteL: {fileID: 21300000, guid: dcd42e637d12d164faabbe71df0aa311, type: 3}
+  m_battlePawnPrefab: {fileID: 2698535587016624613, guid: 02ee112cc413f414babbdd307ee893f5,
+    type: 3}
+  m_level: 1
+  m_experience: 0
+  m_expForNextLevel: 10
+  m_baseExpForNextLevel: 10
+  m_expRequiredUpPower: 1.2
+  m_TP: 0
+  m_maxHP: 15
+  m_currentHP: 15
+  m_growthHP: 1
+  m_baseHP: 15
+  m_maxSP: 5
+  m_currentSP: 5
+  m_growthSP: 2
+  m_baseSP: 5
+  m_maxAP: 5
+  m_currentAP: 1
+  m_baseAP: 5
+  m_strength: 3
+  m_growthStrength: 0
+  m_baseStrength: 3
+  m_fortitude: 2
+  m_growthFortitude: 2
+  m_baseFortitude: 2
+  m_wisdom: 1
+  m_growthWisdom: 3
+  m_baseWisdom: 1
+  m_resistance: 1
+  m_growthResistance: 2
+  m_baseResistance: 1
+  m_agility: 3
+  m_growthAgility: 0
+  m_baseAgility: 3
+  m_x: 4
+  m_y: 2

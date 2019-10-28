@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &310207977648779053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3204601205865880228}
+  - component: {fileID: 2229969452686193554}
+  m_Layer: 0
+  m_Name: Slime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3204601205865880228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310207977648779053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.052559536, y: 0.06556718, z: 0.051665664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2229969452686193554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310207977648779053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744d2e8bf60c08c48b5a8d790d5345ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BattlePawn: {fileID: 5138030754207523095, guid: 93156ebb2eb3701419ef5d69e173867a,
+    type: 3}
+  m_spriteR: {fileID: 21300000, guid: 5a8864015a0e1f84581118e5c8d614a7, type: 3}
+  m_spriteL: {fileID: 21300000, guid: 3df753b5e30a9864abcda000547aa4f4, type: 3}
+  m_level: 1
+  m_maxHP: 5
+  m_HP: 5
+  m_maxSP: 2
+  m_SP: 2
+  m_maxAP: 5
+  m_AP: 0
+  m_attack: 3
+  m_defence: 2
+  m_magic: 1
+  m_magicDefence: 2
+  m_speed: 2

@@ -1,0 +1,249 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5220028704730105186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5220028704730105187}
+  - component: {fileID: 5220028704730105185}
+  m_Layer: 0
+  m_Name: Rachel
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5220028704730105187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220028704730105186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8, y: 0, z: 0.5}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children:
+  - {fileID: 3028546986016239038}
+  - {fileID: 7281967125799230326}
+  - {fileID: 7562611544607540240}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5220028704730105185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220028704730105186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0ca5afd8eb56e448d2bbc305bd7dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_name: Rachel
+  m_title: Apprentice Hunter
+  m_spriteR: {fileID: 21300000, guid: ddea1af758d15844e8a39a55e0482a26, type: 3}
+  m_spriteL: {fileID: 21300000, guid: 2032d1f42bc4113468c2102d0786d56c, type: 3}
+  m_battlePawnPrefab: {fileID: 2698535587016624613, guid: b8107b3bfae6df4468010c94fa65733e,
+    type: 3}
+  m_level: 1
+  m_experience: 0
+  m_expForNextLevel: 10
+  m_baseExpForNextLevel: 10
+  m_expRequiredUpPower: 1.2
+  m_TP: 0
+  m_maxHP: 10
+  m_currentHP: 10
+  m_growthHP: 2
+  m_baseHP: 10
+  m_maxSP: 8
+  m_currentSP: 8
+  m_growthSP: 1
+  m_baseSP: 8
+  m_maxAP: 5
+  m_currentAP: 1
+  m_baseAP: 5
+  m_strength: 2
+  m_growthStrength: 2
+  m_baseStrength: 2
+  m_fortitude: 3
+  m_growthFortitude: 1
+  m_baseFortitude: 3
+  m_wisdom: 3
+  m_growthWisdom: 1
+  m_baseWisdom: 3
+  m_resistance: 2
+  m_growthResistance: 1
+  m_baseResistance: 2
+  m_agility: 3
+  m_growthAgility: 1
+  m_baseAgility: 3
+  m_x: 4
+  m_y: 2
+  m_skills: []
+  m_items:
+  - {fileID: 5384695245488142579}
+  - {fileID: 2331071641958799901}
+  - {fileID: 3149873993207310501}
+--- !u!1 &5607549758156917508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3028546986016239038}
+  - component: {fileID: 5384695245488142579}
+  m_Layer: 0
+  m_Name: Health Potion (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3028546986016239038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5607549758156917508}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.21955095, y: -2.2600331, z: 3.0813057}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 5220028704730105187}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5384695245488142579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5607549758156917508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e6d37612de3a0489cc75825d0fae1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_name: Novice Health Potion
+  m_description: 'Restores 20 health '
+  m_user: {fileID: 0}
+  m_target: {fileID: 0}
+  m_particle: {fileID: 6410093853879072261, guid: a2fec1ca6ae9a4d4b83229a83f206321,
+    type: 3}
+  HealAmount: 20
+  animTime: 1
+  play: 0
+--- !u!1 &6636801278700509447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7562611544607540240}
+  - component: {fileID: 3149873993207310501}
+  m_Layer: 0
+  m_Name: Health Potion (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7562611544607540240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636801278700509447}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.21955095, y: -2.2600331, z: 3.0813057}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 5220028704730105187}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3149873993207310501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636801278700509447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e6d37612de3a0489cc75825d0fae1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_name: Novice Health Potion
+  m_description: 'Restores 20 health '
+  m_user: {fileID: 0}
+  m_target: {fileID: 0}
+  m_particle: {fileID: 6410093853879072261, guid: a2fec1ca6ae9a4d4b83229a83f206321,
+    type: 3}
+  HealAmount: 20
+  animTime: 1
+  play: 0
+--- !u!1 &8495011476792294130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7281967125799230326}
+  - component: {fileID: 2331071641958799901}
+  m_Layer: 0
+  m_Name: Health Potion (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7281967125799230326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495011476792294130}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.21955095, y: -2.2600331, z: 3.0813057}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 5220028704730105187}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2331071641958799901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495011476792294130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e6d37612de3a0489cc75825d0fae1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_name: Novice Health Potion
+  m_description: 'Restores 20 health '
+  m_user: {fileID: 0}
+  m_target: {fileID: 0}
+  m_particle: {fileID: 6410093853879072261, guid: a2fec1ca6ae9a4d4b83229a83f206321,
+    type: 3}
+  HealAmount: 20
+  animTime: 1
+  play: 0
