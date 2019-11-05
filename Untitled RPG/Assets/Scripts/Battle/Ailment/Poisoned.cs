@@ -36,4 +36,9 @@ public class Poisoned : Ailment
         Destroy(gameObject);
     }
 
+
+    private void OnDestroy()
+    {
+        Destroy(m_visual);
+    }
 }

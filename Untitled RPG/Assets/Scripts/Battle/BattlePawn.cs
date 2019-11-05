@@ -235,6 +235,13 @@ public class BattlePawn : MonoBehaviour
 
         m_isDefending = false;
         m_AP += 2;
+        //if the pawn has an ailment and it activates at turn start, activate
+        if (m_ailment != null)
+            if (m_ailment.m_activeTime == ActiveTime.ACTIVETIME_TURNSTART)
+            {
+                m_ailment.Activate();
+            }
+
         if (m_AP > m_maxAP)
             m_AP = m_maxAP;
         m_myTurn = true;
@@ -376,7 +383,8 @@ public class BattlePawn : MonoBehaviour
                 break;
         }
 
-
+        if (damageTotal <= 0)
+            damageTotal = 1;
         m_HP -= damageTotal;
 
         r_hitParticle.emission.SetBurst(0, new ParticleSystem.Burst(0, damageTotal * 2));
@@ -397,6 +405,12 @@ public class BattlePawn : MonoBehaviour
     {
         if (m_isDead)
             return;
+        if (m_ailment != null)
+        {
+            Destroy(m_ailment);
+        }
+        if (m_myTurn)
+            EndTurn();
         m_battleSystem.Death(this);
         m_isDead = true;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;

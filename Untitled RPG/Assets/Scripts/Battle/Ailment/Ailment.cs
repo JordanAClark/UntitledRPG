@@ -34,8 +34,8 @@ abstract public class Ailment : MonoBehaviour
 
 public enum ActiveTime
 {
-    DAMAGETIME_NONE,
-    DAMAGETIME_TURNSTART,
-    DAMAGETIME_TURNEND,
-    DAMAGETIME_ACT
+    ACTIVETIME_NONE,
+    ACTIVETIME_TURNSTART,
+    ACTIVETIME_TURNEND,
+    ACTIVETIME_ACT
 }
