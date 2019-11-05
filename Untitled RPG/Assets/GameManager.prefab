@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &352110068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 352110069}
+  - component: {fileID: 352110070}
+  m_Layer: 0
+  m_Name: Poison Bolt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &352110069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352110068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8530662829172802697}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &352110070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352110068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e126472e73d2e49975d8192e1cc224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_apCost: 1
+  m_spCost: 2
+  m_name: Poison Bolt
+  m_description: Fire a poisoned bolt from Rachel's crossbow that has a chance of
+    poisoning the target
+  m_user: {fileID: 0}
+  m_target: {fileID: 0}
+  m_rangeMax: 3
+  m_rangeMin: 2
+  r_CharacterSpriteLeft: {fileID: 21300000, guid: daecc65670275754db8e4074739b72c8,
+    type: 3}
+  r_CharacterSpriteRight: {fileID: 21300000, guid: e855595ffddab2d4bb3acb2a94eb4b4b,
+    type: 3}
+  r_BoltPrefab: {fileID: 8452184932261966293, guid: c87ed0645d07fa542905d672347d002f,
+    type: 3}
+  m_Bolt: {fileID: 0}
+  m_ailmentPrefab: {fileID: 2195875098170584759, guid: 5a4844d5e017582428172ff79ea91fb0,
+    type: 3}
 --- !u!1 &574622151
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +163,12 @@ MonoBehaviour:
     will both take extra damage. Costs 1 AP and 2 SP
   m_user: {fileID: 0}
   m_target: {fileID: 0}
-  m_range: 1
+  m_rangeMax: 1
+  m_rangeMin: 0
+  m_throwTimer: 0
+  m_landingDist: 0
+  m_hitPawn: {fileID: 0}
+  m_hasCollided: 0
 --- !u!1 &7915550808251871285
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,19 +266,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5220028704730105185, guid: d139bf35d3057f4419eab1d747cf9980,
         type: 3}
-      propertyPath: m_currentAP
-      value: 0
+      propertyPath: m_skills.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5220028704730105185, guid: d139bf35d3057f4419eab1d747cf9980,
         type: 3}
-      propertyPath: m_x
-      value: 5
+      propertyPath: m_currentAP
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5220028704730105185, guid: d139bf35d3057f4419eab1d747cf9980,
         type: 3}
       propertyPath: m_y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5220028704730105185, guid: d139bf35d3057f4419eab1d747cf9980,
+        type: 3}
+      propertyPath: m_skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 352110070}
     - target: {fileID: 5220028704730105187, guid: d139bf35d3057f4419eab1d747cf9980,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -314,11 +385,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_currentAP
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5220028704730105185, guid: e6cf4b98c937c6d4d90a6c7f3d7470f4,
-        type: 3}
-      propertyPath: m_y
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5220028704730105185, guid: e6cf4b98c937c6d4d90a6c7f3d7470f4,
         type: 3}

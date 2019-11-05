@@ -218,6 +218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_spriteR: {fileID: 21300000, guid: 5a8864015a0e1f84581118e5c8d614a7, type: 3}
   m_spriteL: {fileID: 21300000, guid: 3df753b5e30a9864abcda000547aa4f4, type: 3}
+  m_facingLeft: 0
+  m_ailment: {fileID: 0}
   m_level: 0
   m_name: 
   m_maxHP: 0
@@ -331,7 +333,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!1 &5138030754478616251
 GameObject:

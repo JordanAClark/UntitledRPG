@@ -772,7 +772,7 @@ public class BattleSystem : MonoBehaviour
 
         foreach (BattleSpace space in m_battleSpaces)
         {
-            if (m_currentTurnPawn.isInRange(space.x, space.y, r_selectedSkill.m_range) && space != m_battleSpaces[m_currentTurnPawn.m_x, m_currentTurnPawn.m_y])
+            if (m_currentTurnPawn.isInRange(space.x, space.y, r_selectedSkill.m_rangeMin, r_selectedSkill.m_rangeMax) && space != m_battleSpaces[m_currentTurnPawn.m_x, m_currentTurnPawn.m_y])
             {
                 space.m_cube.GetComponent<MeshRenderer>().material = m_materialAttack;
                 space.m_selectable = true;

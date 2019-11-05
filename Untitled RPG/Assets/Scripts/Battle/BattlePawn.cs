@@ -7,6 +7,8 @@ public class BattlePawn : MonoBehaviour
 {
     public Sprite m_spriteR;
     public Sprite m_spriteL;
+    public bool m_facingLeft;
+    public Ailment m_ailment;
 
     [Header("Stats")]
     public int m_level;
@@ -80,6 +82,7 @@ public class BattlePawn : MonoBehaviour
             m_spriteR = stats.m_spriteR;
             m_spriteL = stats.m_spriteL;
             GetComponent<SpriteRenderer>().sprite = m_spriteL;
+            m_facingLeft = true;
 
             m_level = stats.m_level;
             m_name = stats.name;
@@ -109,6 +112,7 @@ public class BattlePawn : MonoBehaviour
             m_spriteR = stats.m_spriteR;
             m_spriteL = stats.m_spriteL;
             GetComponent<SpriteRenderer>().sprite = m_spriteR;
+            m_facingLeft = false;
 
             m_level = stats.m_level;
 
@@ -255,9 +259,15 @@ public class BattlePawn : MonoBehaviour
 
         moveTimer = 1.0f;
         if (targX > m_oldX)
+        {
             gameObject.GetComponent<SpriteRenderer>().sprite = m_spriteR;
+            m_facingLeft = false;
+        }
         else if (targX < m_oldX)
+        {
             gameObject.GetComponent<SpriteRenderer>().sprite = m_spriteL;
+            m_facingLeft = true;
+        }
     }
 
     public void Attack(int targX, int targY, Vector3 targPos)
@@ -273,9 +283,15 @@ public class BattlePawn : MonoBehaviour
         m_targetY = targY;
 
         if (targX > m_x)
+        {
             gameObject.GetComponent<SpriteRenderer>().sprite = m_spriteR;
+            m_facingLeft = false;
+        }
         else if (targX < m_x)
+        {
             gameObject.GetComponent<SpriteRenderer>().sprite = m_spriteL;
+            m_facingLeft = true;
+        }
     }
 
     public void TakeDamage(BattlePawn attacker, DamageType damageType, float DamageMod)
@@ -286,21 +302,80 @@ public class BattlePawn : MonoBehaviour
         if (Random.Range(0, 31 - attacker.m_speed + m_speed) == 0)
             isCrit = true;
 
-        if (isCrit)
+        switch (damageType)
         {
-            // a criticle hit will not use defence
-            damageTotal = (int)((attacker.m_attack * Random.Range(1.0f, 1.5f)) * (DamageMod));
+            case DamageType.DAMAGETYPE_PHYSICAL:
+                if (isCrit)
+                {
+                    // a criticle hit will not use defence
+                    damageTotal = (int)((attacker.m_attack * Random.Range(1.0f, 1.5f)) * (DamageMod));
 
-        }
-        else
-        {
-            damageTotal = (int)((attacker.m_attack * Random.Range(1.0f, 1.5f) - (m_defence / 2 * Random.Range(1.0f, 0.5f)))*(DamageMod));
+                }
+                else
+                {
+                    damageTotal = (int)((attacker.m_attack * Random.Range(1.0f, 1.5f) - (m_defence / 2 * Random.Range(1.0f, 0.5f))) * (DamageMod));
+                }
+
+                if (m_isDefending)
+                {
+                    damageTotal = (int)(damageTotal / 2);
+                }
+                break;
+            case DamageType.DAMAGETYPE_MAGIC:
+                if (isCrit)
+                {
+                    // a criticle hit will not use defence
+                    damageTotal = (int)((attacker.m_magic * Random.Range(1.0f, 1.5f)) * (DamageMod));
+
+                }
+                else
+                {
+                    damageTotal = (int)((attacker.m_magic * Random.Range(1.0f, 1.5f) - (m_magicDefence / 2 * Random.Range(1.0f, 0.5f))) * (DamageMod));
+                }
+
+                if (m_isDefending)
+                {
+                    damageTotal = (int)(damageTotal / 2);
+                }
+                break;
+            case DamageType.DAMAGETYPE_SKILL:
+                if (isCrit)
+                {
+                    // a criticle hit will not use defence
+                    damageTotal = (int)((attacker.m_magic * Random.Range(1.0f, 1.5f)) * (DamageMod));
+
+                }
+                else
+                {
+                    damageTotal = (int)((attacker.m_magic * Random.Range(1.0f, 1.5f) - (m_defence / 2 * Random.Range(1.0f, 0.5f))) * (DamageMod));
+                }
+
+                if (m_isDefending)
+                {
+                    damageTotal = (int)(damageTotal / 2);
+                }
+                break;
+            case DamageType.DAMAGETYPE_MAGICWEAPON:
+                if (isCrit)
+                {
+                    // a criticle hit will not use defence
+                    damageTotal = (int)((attacker.m_attack * Random.Range(1.0f, 1.5f)) * (DamageMod));
+
+                }
+                else
+                {
+                    damageTotal = (int)((attacker.m_attack * Random.Range(1.0f, 1.5f) - (m_magicDefence / 2 * Random.Range(1.0f, 0.5f))) * (DamageMod));
+                }
+
+                if (m_isDefending)
+                {
+                    damageTotal = (int)(damageTotal / 2);
+                }
+                break;
+            default:
+                break;
         }
 
-        if (m_isDefending)
-        {
-            damageTotal = (int)(damageTotal * DamageMod / 2);
-        }
 
         m_HP -= damageTotal;
 
@@ -589,7 +664,7 @@ public class BattlePawn : MonoBehaviour
             }
 
 
-            
+
             EndTurn();
         }
     }
@@ -605,12 +680,32 @@ public class BattlePawn : MonoBehaviour
 
         return false;
     }
+
+    public bool isInRange(int targetX, int targetY, int minRange, int maxRange)
+    {
+        float distx = Mathf.Abs(m_x - targetX);
+        float disty = Mathf.Abs(m_y - targetY);
+        float dist = distx + disty;
+
+
+
+        if (dist <= maxRange && dist >= minRange)
+        {
+            return true;
+        }
+
+
+        return false;
+    }
 }
 
 public enum DamageType
 {
-    DAMAGETYPE_PHYSICAL,
-    DAMAGETYPE_MAGIC
+    DAMAGETYPE_PHYSICAL, // Attack vs Defence 
+    DAMAGETYPE_MAGIC,  // Magic vs Magic Defence
+    DAMAGETYPE_SKILL, // Magic vs Defence
+    DAMAGETYPE_MAGICWEAPON, // Attack vs Magic Defence
+
 }
 
 public static class PointFunctions

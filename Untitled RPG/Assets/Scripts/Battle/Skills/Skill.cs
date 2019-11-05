@@ -10,7 +10,8 @@ abstract public class Skill : MonoBehaviour
     public string m_description;
     public BattlePawn m_user;
     public BattlePawn m_target;
-    public int m_range;
+    public int m_rangeMax;
+    public int m_rangeMin = 0;
 
     // Start is called before the first frame update
     void Start()

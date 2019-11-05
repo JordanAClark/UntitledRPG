@@ -121,7 +121,7 @@ public class WildToss : Skill
         oldPos = user.transform.position;
         calcLandingSquare();
         m_throwTimer = 1;
-        m_airTimeTimer = UP_TIME + (THROW_TIME_PER_SPACE * m_range) + UP_TIME / 2;
+        m_airTimeTimer = UP_TIME + (THROW_TIME_PER_SPACE * m_rangeMax) + UP_TIME / 2;
         targetStart = m_target.gameObject.transform.position + new Vector3(0, 1, 0);
         m_animationStarted = true;
         //EndSkill();
@@ -163,7 +163,7 @@ public class WildToss : Skill
 
     public override bool ValidTarget(BattlePawn m_user, int targetX, int targetY)
     {
-        if (m_user.isInRange(targetX, targetY, m_range) && m_user.m_battleSystem.m_battleSpaces[targetX, targetY].m_occupied)
+        if (m_user.isInRange(targetX, targetY, m_rangeMax) && m_user.m_battleSystem.m_battleSpaces[targetX, targetY].m_occupied)
         {
             if (m_user.m_battleSystem.m_battleSpaces[targetX, targetY].m_pawn.gameObject.tag == "Enemy")
             {
