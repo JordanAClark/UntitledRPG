@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 5138030754207523178}
   - component: {fileID: 5138030754207523176}
   m_Layer: 0
-  m_Name: Slime BattlePawn
+  m_Name: Snake BattlePawn
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf8d9d6cc744d824487e54b74f6412d2, type: 2}
+  - {fileID: 2100000, guid: 6dca8d12f9a9917458b7713d43b065ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5a8864015a0e1f84581118e5c8d614a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6052897ed6a28484e877fdff50a60edb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -216,8 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1f31a6735182145adea9fa4bd403ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_spriteR: {fileID: 21300000, guid: 5a8864015a0e1f84581118e5c8d614a7, type: 3}
-  m_spriteL: {fileID: 21300000, guid: 3df753b5e30a9864abcda000547aa4f4, type: 3}
+  m_spriteR: {fileID: 21300000, guid: 6052897ed6a28484e877fdff50a60edb, type: 3}
+  m_spriteL: {fileID: 21300000, guid: 073605e4a3b804243aa997e57d984cc9, type: 3}
   m_facingLeft: 0
   m_ailment: {fileID: 0}
   m_level: 0

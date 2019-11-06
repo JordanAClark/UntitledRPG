@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PoisonBolt : Skill
 {
-    const float ARROW_SPEED = 0.5f;
+    const float ARROW_SPEED = 5.0f;
 
     bool m_animationStarted;
     public Sprite r_CharacterSpriteLeft, r_CharacterSpriteRight;
     public GameObject r_BoltPrefab, m_Bolt;
     Direction m_fireDirection;
     public GameObject m_ailmentPrefab;
+
+    
 
     void Start()
     {
@@ -22,7 +24,15 @@ public class PoisonBolt : Skill
     {
         if (!m_animationStarted)
             return;
+        //move arrow to the target
+        m_Bolt.transform.SetPositionAndRotation(Vector3.MoveTowards(m_Bolt.transform.position, m_target.transform.position + new Vector3(0,0.5f,0), ARROW_SPEED * Time.deltaTime), m_Bolt.transform.rotation);
+        m_Bolt.transform.LookAt(m_target.transform.position + new Vector3(0, 0.5f, 0));
 
+        if(Vector3.Distance(m_Bolt.transform.position, m_target.transform.position + new Vector3(0, 0.5f, 0)) <= 0.0f)
+        {
+            m_animationStarted = false;
+            EndSkill();
+        }
     }
 
     public override bool UseSkill(BattlePawn user, int targetX, int targetY)
@@ -59,27 +69,29 @@ public class PoisonBolt : Skill
                 break;
             case Direction.DIRECTION_RIGHT:
                 m_user.GetComponent<SpriteRenderer>().sprite = r_CharacterSpriteRight;
-                m_Bolt = Instantiate(r_BoltPrefab, m_user.gameObject.transform.position + new Vector3(0, 0, 0.5f), Quaternion.Euler(0, 90, 0));
+                m_Bolt = Instantiate(r_BoltPrefab, m_user.gameObject.transform.position + new Vector3(0, 0, 0.7f), Quaternion.Euler(0, 90, 0));
                 break;
             case Direction.DIRECTION_LEFT:
                 m_user.GetComponent<SpriteRenderer>().sprite = r_CharacterSpriteLeft;
-                m_Bolt = Instantiate(r_BoltPrefab, m_user.gameObject.transform.position + new Vector3(0, 0, 0.5f), Quaternion.identity);
+                m_Bolt = Instantiate(r_BoltPrefab, m_user.gameObject.transform.position + new Vector3(0, 0, 0.7f), Quaternion.identity);
                 break;
             default:
                 break;
         }
         m_animationStarted = true;
-        EndSkill();
+
         return true;
     }
 
     void EndSkill()
     {
         m_target.TakeDamage(m_user, DamageType.DAMAGETYPE_SKILL, 1);
-        //if (Random.Range(0.0f, 1.0f) >= 0.5)
+        //randomize poison effect
+        if (Random.Range(0.0f, 1.0f) >= 0.5)
         {
             if (m_target.m_ailment == null)
             {
+                //poison the target
                 m_target.m_ailment = Instantiate(m_ailmentPrefab, m_target.gameObject.transform).GetComponent<Poisoned>();
                 m_target.m_ailment.Inflict(m_target, m_user);
             }
